@@ -48,7 +48,7 @@ public class Cliente {
         this.endereco = endereco ;
     }
     public String toString() {
-        return ("nome :" + nome + "cpf:" + cpf + "data nascimento" + dataNascimento + "idade" + idade + "endereco" + endereco) ;
+        return ("nome :" + nome + " cpf: " + cpf + ", data nascimento: " + dataNascimento + ", idade: " + idade + ", endereco: " + endereco) ;
     }
     public String validarCPF(String cpf) {
         int i ;
@@ -74,7 +74,7 @@ public class Cliente {
         int soma  = 0;
         //conversao do cpf_aux em inteiro
         int digito ;
-        for (i = 0;i < 10;i++) {
+        for (i = 0;i < 9;i++) {
             digito = Character.getNumericValue(cpf_aux_1.charAt(i)) ;
             soma = soma + (lista[i] * digito) ;
         } 
@@ -94,7 +94,7 @@ public class Cliente {
             digito = Character.getNumericValue(cpf_aux_1.charAt(i + 1)) ;
             soma = soma + (lista[i] * digito) ;
         }
-        soma = soma + (lista[9] * primeiro_digito) ;
+        soma = soma + (lista[8] * primeiro_digito) ;
         resto = soma % 11 ;
         if (resto == 0) {
             segundo_digito = 0 ;
