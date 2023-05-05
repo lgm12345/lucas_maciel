@@ -1,31 +1,38 @@
+import java.util.Date;
+import java.text.SimpleDateFormat;
 public class App {
+    public static SimpleDateFormat formata_data = new SimpleDateFormat("DD//MM/YYYY") ;
     public static void main(String[] args) {
-        Veiculo veiculo = new Veiculo("BRA2E19","Ford","Focus" ) ;
-        Cliente cliente = new Cliente("Lucas","052.700.529-03","07/01/2000",23,"Campinas");
-        Sinistro sinistro = new Sinistro(12345,"10/08/21","campinas") ;
-        Seguradora seguradora = new Seguradora("Porto Seguros","11-988399061","Campinas","portoseguros@gmail.com") ;
-        //testando getters e setters da classe Veiculo:
-        System.out.println(veiculo.getPlaca());
-        veiculo.setMarca("Fiat");
-        System.out.println(veiculo.getMarca()) ;
-        //testando getters e setters da classe Seguradora:
-        System.out.println(seguradora.getNome());
-        seguradora.setNome("Alianz Seguros");
-        System.out.println(seguradora.getNome()) ;
-        //testando getters e setters da classe Sinistro ;
-        System.out.println(sinistro.getData());
-        sinistro.setData("01/02/15");
-        System.out.println(sinistro.getData()) ;
-        //testando getters e setters da classe Cliente ;
-        System.out.println(cliente.getNome()) ;
-        cliente.setNome("Joao") ;
-        System.out.println(cliente.getNome()) ;
-        //testando o metodo toString da classe Cliente:
-        System.out.println(cliente.toString()) ;
-        //testando o metodo Validar cpf da classe Cliente:
-        System.out.println(cliente.validarCPF(cliente.getCpf())) ;
+        try {
+            // leitura da data
+            Date data = new Date() ;
+            // instanciação da seguradora
+            Seguradora seguradora = new Seguradora("Porto Seguros","41-3273-7414","portoseguros@gmail.com","rua XX") ;
+           // instanciação dos clientes PF e PJ
+           Cliente_PF cliente_pf = new Cliente_PF("Lucas","rua YY","052.700.529-03","masculino", data,"ensino superior completo", data,"media") ;
+           Cliente_PJ cliente_pj = new Cliente_PJ("Andre", "rua ZZ","", data) ;
+           // instanciação dos veículos 
+           Veiculo veiculo_1 = new Veiculo("placa_1","marca_1","modelo_1", 2010) ;
+           Veiculo veiculo_2 = new Veiculo("placa_2","marca_2","modelo_2",2011) ;
+           //adicionando um veiculo em cada cliente cadastrado
+           cliente_pf.adicionaLista(veiculo_1) ;
+           cliente_pj.adicionaLista(veiculo_2) ;
+           // cadastrando os clientes na seguradora 
+           seguradora.cadastrarCliente(cliente_pj) ;
+           seguradora.cadastrarCliente(cliente_pf) ;
+           // gererando um sinistro
+           seguradora.gerarSinistro(data,"rua ZY", seguradora, veiculo_2, cliente_pj) ;
+           // removendo um cliente 
+           seguradora.removerCliente(cliente_pj) ;
+           //testando os metodos to_string
+           System.out.println(veiculo_1.toString());
+           System.out.println(seguradora.toString()) ;
+           System.out.println(cliente_pf.toString());
+           System.out.println(cliente_pj.toString());
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
     }
-    
-
 
 }

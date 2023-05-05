@@ -2,13 +2,15 @@ public class Veiculo {
     private String placa ;
     private String marca ;
     private String modelo ;
+    private int anoFabricacao ;
 
     //construtor 
 
-    public Veiculo(String placa,String marca,String modelo) {
+    public Veiculo(String placa,String marca,String modelo,int anoFabricacao) {
         this.placa = placa ;
         this.marca = marca ;
         this.modelo = modelo ;
+        this.anoFabricacao = anoFabricacao ;
     }
 
     //getters e setters
@@ -30,5 +32,14 @@ public class Veiculo {
     }
     public void setModelo(String modelo) {
         this.modelo = modelo;
+    }
+    public int getAnoFabricacao(){
+        return anoFabricacao ;
+    }
+    public void setAnoFabricacao(int anoFabricacao) {
+        this.anoFabricacao = anoFabricacao ;
+    }
+    public String toString() {
+        return ("placa :" + placa + ", marca:" + marca + ", modelo:" + modelo + ", ano de fabricacao:" + anoFabricacao) ;
     }
 }
